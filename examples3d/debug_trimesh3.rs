@@ -1,6 +1,6 @@
 use na::Point3;
 use rapier3d::dynamics::{JointSet, RigidBodyBuilder, RigidBodySet};
-use rapier3d::geometry::{ColliderBuilder, ColliderSet};
+use rapier3d::geometry::{ColliderBuilder, ColliderSet, Trimesh};
 use rapier_testbed3d::Testbed;
 
 pub fn init_world(testbed: &mut Testbed) {
@@ -52,6 +52,26 @@ pub fn init_world(testbed: &mut Testbed) {
         .translation(0.0, 0.0, 0.0)
         .build();
     let handle = bodies.insert(rigid_body);
+
+    let trimesh = Trimesh::new(vtx.clone(), idx.clone());
+    println!("{:?}", md5::compute(bincode::serialize(&trimesh).unwrap()));
+    println!(
+        "{:?}",
+        md5::compute(bincode::serialize(&trimesh.wquadtree).unwrap())
+    );
+    println!(
+        "{:?}",
+        md5::compute(bincode::serialize(&trimesh.indices).unwrap())
+    );
+    println!(
+        "{:?}",
+        md5::compute(bincode::serialize(&trimesh.vertices).unwrap())
+    );
+    println!(
+        "{:?}",
+        md5::compute(bincode::serialize(&trimesh.aabb).unwrap())
+    );
+
     let collider = ColliderBuilder::trimesh(vtx, idx).build();
     colliders.insert(collider, handle, &mut bodies);
 

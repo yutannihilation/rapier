@@ -9,10 +9,14 @@ use ncollide::shape::FeatureId;
 #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
 /// A triangle mesh.
 pub struct Trimesh {
-    wquadtree: WQuadtree<usize>,
-    aabb: AABB<f32>,
-    vertices: Vec<Point<f32>>,
-    indices: Vec<Point3<u32>>,
+    /// Should not be public.
+    pub wquadtree: WQuadtree<usize>,
+    /// Should not be public.
+    pub aabb: AABB<f32>,
+    /// Should not be public.
+    pub vertices: Vec<Point<f32>>,
+    /// Should not be public.
+    pub indices: Vec<Point3<u32>>,
 }
 
 impl Trimesh {
