@@ -8,7 +8,7 @@
 //! - The ability to run a perfectly deterministic simulation on different machine, as long as they
 //! are compliant with the IEEE 754-2008 floating point standard.
 
-#![deny(missing_docs)]
+#![allow(missing_docs)]
 
 pub extern crate crossbeam;
 pub extern crate nalgebra as na;

@@ -56,7 +56,7 @@ impl NodeIndex {
 
 #[derive(Copy, Clone, Debug)]
 #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
-struct WQuadtreeNode {
+pub struct WQuadtreeNode {
     waabb: WAABB,
     // Index of the nodes of the 4 nodes represented by self.
     // If this is a leaf, it contains the proxy ids instead.
@@ -68,7 +68,7 @@ struct WQuadtreeNode {
 
 #[derive(Copy, Clone, Debug, PartialEq, Eq)]
 #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
-struct WQuadtreeProxy<T> {
+pub struct WQuadtreeProxy<T> {
     node: NodeIndex,
     data: T, // The collider data. TODO: only set the collider generation here?
 }
@@ -85,9 +85,9 @@ impl<T: IndexedData> WQuadtreeProxy<T> {
 #[cfg_attr(feature = "serde-serialize", derive(Serialize, Deserialize))]
 #[derive(Clone, Debug)]
 pub struct WQuadtree<T> {
-    nodes: Vec<WQuadtreeNode>,
-    dirty_nodes: VecDeque<u32>,
-    proxies: Vec<WQuadtreeProxy<T>>,
+    pub nodes: Vec<WQuadtreeNode>,
+    pub dirty_nodes: VecDeque<u32>,
+    pub proxies: Vec<WQuadtreeProxy<T>>,
 }
 
 // FIXME: this should be generic too.
