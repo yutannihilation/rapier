@@ -61,15 +61,15 @@ pub fn init_world(testbed: &mut Testbed) {
     );
     println!(
         "{:?}",
-        md5::compute(bincode::serialize(&trimesh.indices).unwrap())
+        md5::compute(bincode::serialize(&trimesh.wquadtree.dirty_nodes).unwrap())
     );
     println!(
         "{:?}",
-        md5::compute(bincode::serialize(&trimesh.vertices).unwrap())
+        md5::compute(bincode::serialize(&trimesh.wquadtree.nodes).unwrap())
     );
     println!(
         "{:?}",
-        md5::compute(bincode::serialize(&trimesh.aabb).unwrap())
+        md5::compute(bincode::serialize(&trimesh.wquadtree.proxies).unwrap())
     );
 
     let collider = ColliderBuilder::trimesh(vtx, idx).build();
