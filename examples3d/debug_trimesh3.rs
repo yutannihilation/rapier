@@ -67,6 +67,13 @@ pub fn init_world(testbed: &mut Testbed) {
         "{:?}",
         md5::compute(bincode::serialize(&trimesh.wquadtree.nodes).unwrap())
     );
+    for (i, node) in trimesh.wquadtree.nodes.iter().enumerate() {
+        println!(
+            "node {}: {:?}",
+            i,
+            md5::compute(bincode::serialize(&node).unwrap())
+        );
+    }
     println!(
         "{:?}",
         md5::compute(bincode::serialize(&trimesh.wquadtree.proxies).unwrap())
